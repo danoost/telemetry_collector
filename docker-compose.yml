@@ -54,6 +54,17 @@ services:
       - telemetry
     volumes:
       - chronograf-volume:/var/lib/chronograf # persistent volume
+      
+  nxos1:
+    image: ${NXOS_IMAGE}
+    container_name: nxos1
+    restart: always
+    privileged: true
+    ports:
+      - 50051:50051
+    networks:
+      - telemetry
+  
 networks:
   telemetry:
     ipam:
