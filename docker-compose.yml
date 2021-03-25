@@ -8,7 +8,8 @@ services:
     ports:
       - 8086:8086
     networks:
-      - telemetry
+      telemetry:
+        ipv4_address: 172.16.238.10
     volumes:
       - ${INFLUX_CONFIG}:/etc/influxdb
       - ${INFLUX_DATA}:/var/lib/influxdb
@@ -26,7 +27,8 @@ services:
     ports:
       - 57000:57000
     networks:
-      - telemetry
+      telemetry:
+        ipv4_address: 172.16.238.11
     volumes:
       - ${TELEGRAF_CONFIG}:/etc/telegraf:ro
     entrypoint: /entrypoint.sh -config /etc/telegraf/telegraf.conf -config-directory /etc/telegraf/telegraf.d
@@ -39,7 +41,8 @@ services:
     restart: always
     user: "${CURRENT_UID}:${CURRENT_GID}"
     networks:
-      - telemetry
+      telemetry:
+        ipv4_address: 172.16.238.12
     volumes:
       - ${TELEGRAF_CONFIG}:/etc/telegraf:ro
     entrypoint: /entrypoint.sh -config /etc/telegraf/gnmi_on_change.conf
@@ -51,7 +54,8 @@ services:
     ports:
       - 8888:8888
     networks:
-      - telemetry
+      telemetry:
+        ipv4_address: 172.16.238.20
     volumes:
       - chronograf-volume:/var/lib/chronograf # persistent volume
       
@@ -63,7 +67,8 @@ services:
     ports:
       - 50051:50051
     networks:
-      - telemetry
+      telemetry:
+        ipv4_address: 172.16.238.100
   
 networks:
   telemetry:

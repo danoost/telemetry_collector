@@ -3,8 +3,8 @@
 addresses = []
 
 ### define credentials
-username = "cisco"
-password = "cisco"
+username = "admin"
+password = "admin"
 
 ### enable client-side TLS and define CA to authenticate the device
 enable_tls = true
